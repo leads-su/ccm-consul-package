@@ -1,0 +1,99 @@
+{
+  "name": "leads-su/ccm-consul",
+  "description": "Consul package for CCM backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "ccm",
+    "leads",
+    "consul",
+    "users",
+    "extension",
+    "kv",
+    "key",
+    "value",
+    "key value"
+  ],
+  "homepage": "https://github.com/leads-su/ccm-consul-package",
+  "authors": [
+    {
+      "name": "Zhivolupov Ivan",
+      "email": "iz@leads.su",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-json": "*",
+    "ext-ldap": "*",
+    "leads-su/ccm-domain": "^1.0",
+    "leads-su/ccm-users": "^1.0",
+    "leads-su/ccm-consul-laravel-sdk": "^1.0",
+    "doctrine/dbal": "^3.1",
+    "guzzlehttp/guzzle": "^7.3",
+    "spatie/laravel-event-sourcing": "^5.0"
+  },
+  "require-dev": {
+    "leads-su/ccm-testing": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ConsulConfigManager\\Consul\\Database\\Factories\\": "database/factories",
+      "ConsulConfigManager\\Consul\\": "src/"
+    },
+    "files": []
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ConsulConfigManager\\Consul\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ConsulConfigManager\\Consul\\Providers\\ConsulServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "psr": [
+      "vendor/bin/php-cs-fixer fix"
+    ],
+    "test": [
+      "phpunit --color=always"
+    ],
+    "test:feature": [
+      "phpunit --color=always --testsuite \"Feature Test Suite\""
+    ],
+    "test:integration": [
+      "phpunit --color=always --testsuite \"Integration Test Suite\""
+    ],
+    "test:unit": [
+      "phpunit --color=always --testsuite \"Unit Test Suite\""
+    ],
+    "test:coverage": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --color=always --coverage-clover=\"output/code-coverage/clover.xml\""
+    ],
+    "test:coverage-text": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --color=always --coverage-text"
+    ],
+    "test:coverage-gitlab": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --color=never --coverage-text --coverage-clover=\"reports/clover.xml\" --coverage-cobertura=\"reports/cobertura.xml\""
+    ],
+    "test:coverage-html": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --color=always --coverage-html=\"output/code-coverage\""
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "secure-http": false
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
